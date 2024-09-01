@@ -7,10 +7,43 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="#7BF6DDDD">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <EditText
+            android:id="@+id/txtPublicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Que estas pensando?" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="80dp"
+            android:onClick="crearPost"
+            android:text="Post" />
+    </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="190dp" />
 
 </FrameLayout>

@@ -50,6 +50,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostViewHolder> {
                 Toast.makeText(context, "Elemento Seleccionado: "+posts.get(position).getNombre(), Toast.LENGTH_SHORT).show();
                 //test
                 Intent intent = new Intent(context, MainActivity2.class);
+                intent.putExtra("idPublicacion", posts.get(position).getPost_id());
                 intent.putExtra("comentario", posts.get(position).getComentario().toString());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);

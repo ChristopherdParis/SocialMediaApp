@@ -1,6 +1,8 @@
 package com.example.socialmediaapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.socialmediaapp.adapter.PostAdapter;
+import com.example.socialmediaapp.model.CrearPost;
 import com.example.socialmediaapp.model.Post;
 import com.example.socialmediaapp.model.PostResponse;
 import com.example.socialmediaapp.network.ApiBusDigital;
@@ -28,12 +31,15 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private List<Post> posts = new ArrayList<>();
     private PostAdapter postAdapter;
+    private EditText et1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        et1=findViewById(R.id.txtPublicacion);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -83,5 +89,29 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Network error while fetching posts: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    
+    public void crearPost(View view) {
+        String hola = et1.getText().toString();
+        CrearPost nuevoPost = new CrearPost(hola," ",1);
+        Call<Object> call = ApiClient.getClient().create(ApiBusDigital.class).registrarPublicacion(nuevoPost);
+        call.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Publicado", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Toast.makeText(MainActivity.this, "Error al Publicar", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                // Error de red u otro problema
+                Toast.makeText(MainActivity.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        Toast.makeText(this, "post publicado: "+ hola, Toast.LENGTH_SHORT).show();
     }
 }
