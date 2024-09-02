@@ -1,7 +1,9 @@
 package com.example.socialmediaapp.network;
 
 import com.example.socialmediaapp.model.CrearPost;
+import com.example.socialmediaapp.model.LoginResponse;
 import com.example.socialmediaapp.model.PostResponse;
+import com.example.socialmediaapp.model.UserLogin;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -12,6 +14,10 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ApiBusDigital {
+
+    @POST("iniciarSession")
+    Call<LoginResponse> iniciarSession(@Body UserLogin user);
+
     @GET("publicaciones")
     Call<PostResponse> getPublicaciones();
 

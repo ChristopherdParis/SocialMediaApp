@@ -7,43 +7,105 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:background="#7BF6DDDD">
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="50dp"
+        <!-- Logo UI -->
+        <TextView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Social App"
+            android:textSize="48sp"
+            android:textColor="#FFFFFF"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:fontFamily="sans-serif-black" />
+
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="by christopher"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/logo"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/subtitle"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-medium" />
+
+        <!-- Campo de entrada de correo electrónico -->
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_below="@id/welcome_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:hint="Usuario"
+            android:background="@drawable/text_background"
+            android:padding="10dp"
+            android:inputType="textEmailAddress"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A9A9A9" />
 
         <EditText
-            android:id="@+id/txtPublicacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/email"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Que estas pensando?" />
+            android:hint="******"
+            android:background="@drawable/text_background"
+            android:padding="10dp"
+            android:inputType="textPassword"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A9A9A9" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/sign_in_button"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_background"
+            android:fontFamily="sans-serif-medium"
+            android:onClick="ingresar"
+            android:text="INGRESAR"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <!-- Enlace de crear cuenta -->
+        <TextView
+            android:id="@+id/create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="80dp"
-            android:onClick="crearPost"
-            android:text="Post" />
-    </FrameLayout>
+            android:text="Crear Cuenta"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_below="@id/sign_in_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif"
+            android:clickable="true"
+            android:focusable="true" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="190dp" />
-
+    </RelativeLayout>
 </FrameLayout>
